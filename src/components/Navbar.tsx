@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Truck } from "lucide-react";
+import { Menu, X, Phone, Truck, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/servicios", label: "Servicios" },
+  { href: "/blog", label: "Blog" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -129,30 +130,19 @@ export default function Navbar() {
             ))}
           </motion.div>
 
-          {/* CTA buttons */}
+          {/* CTA button */}
           <motion.div
-            className="hidden md:flex items-center gap-3"
+            className="hidden md:flex items-center"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
           >
-            <a
-              href="https://wa.me/528112345678"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-sm font-semibold px-4 py-2 rounded-4xl border transition-all ${
-                !isDark
-                  ? "border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-700"
-                  : "border-white/40 text-white hover:border-white hover:bg-white/10"
-              }`}
-            >
-              Hablar con asesor
-            </a>
             <Link
               href="/contacto"
-              className="text-sm font-bold px-5 py-2 bg-red-700 text-white rounded-4xl hover:bg-red-800 shadow-sm shadow-red-900/20 transition-colors"
+              className="group flex items-center gap-2 text-sm font-bold px-5 py-2.5 bg-red-700 text-white rounded-4xl hover:bg-red-800 shadow-sm shadow-red-900/20 transition-colors"
             >
-              Solicitar Cotización
+              Hablemos
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
@@ -219,26 +209,17 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <motion.div
-                className="pt-3 space-y-2"
+                className="pt-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.22 }}
               >
-                <a
-                  href="https://wa.me/528112345678"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center px-4 py-2.5 border border-gray-300 rounded-4xl text-sm font-semibold text-gray-700"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Hablar con asesor
-                </a>
                 <Link
                   href="/contacto"
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center px-4 py-2.5 bg-red-700 text-white rounded-4xl text-sm font-bold"
                 >
-                  Solicitar Cotización
+                  Hablemos
                 </Link>
               </motion.div>
             </div>

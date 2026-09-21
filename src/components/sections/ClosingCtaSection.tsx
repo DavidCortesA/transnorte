@@ -27,7 +27,7 @@ export default function ClosingCtaSection() {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1471174522655-7e34f6a5a785?w=1920&h=700&fit=crop&q=80"
+          src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=1920&h=700&fit=crop&q=80"
           alt="Transporte logístico industrial"
           fill
           className="object-cover object-center"
@@ -46,9 +46,9 @@ export default function ClosingCtaSection() {
           variants={item as Variants}
           className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-5"
         >
-          Su próximo embarque merece
+          ¿Listo para enviar
           <br className="hidden sm:block" />
-          <span className="text-red-500"> el mejor operador.</span>
+          <span className="text-red-500"> tu carga?</span>
         </motion.h2>
 
         <motion.p

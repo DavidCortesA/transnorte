@@ -4,8 +4,9 @@ import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import {
-  Truck, Navigation, Wrench, Shield, AlertCircle, Package, ChevronRight, ArrowRight,
+  Truck, Navigation, Wrench, Shield, AlertCircle, Package, ChevronRight, ArrowRight, LayoutGrid,
 } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 const services = [
   {
@@ -78,9 +79,7 @@ export default function ServicesSection() {
           initial="hidden"
           animate={headerInView ? "visible" : "hidden"}
         >
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-red-700 bg-red-50 px-3 py-1 rounded-4xl mb-4">
-            Nuestros Servicios
-          </span>
+          <Eyebrow icon={LayoutGrid} label="Nuestros Servicios" />
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 leading-tight">
             Soluciones completas de logística
             <br className="hidden sm:block" /> para la industria mexicana
@@ -102,10 +101,10 @@ export default function ServicesSection() {
             <motion.div key={s.title} variants={cardVariants as Variants}>
               <Link
                 href={s.href}
-                className="group bg-white rounded-xl p-7 border border-gray-200 hover:border-red-200 hover:shadow-lg hover:shadow-red-900/5 transition-all duration-300 flex flex-col h-full"
+                className="group bg-white rounded-3xl p-7 border border-gray-200 hover:border-red-200 hover:shadow-lg hover:shadow-red-900/5 transition-all duration-300 flex flex-col h-full"
               >
-                <div className="w-12 h-12 rounded-lg bg-red-50 flex items-center justify-center mb-5 group-hover:bg-red-100 transition-colors">
-                  <s.icon className="w-6 h-6 text-red-700" />
+                <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center mb-5 group-hover:bg-red-700 transition-colors">
+                  <s.icon className="w-6 h-6 text-red-700 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed flex-1">{s.desc}</p>

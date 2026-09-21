@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Truck, Phone, Mail, MapPin, MessageCircle, Globe, Share2, Camera } from "lucide-react";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const services = [
   { label: "Fletes Locales", href: "/servicios#fletes-locales" },
@@ -13,6 +14,7 @@ const services = [
 const navLinks = [
   { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
+  { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "/contacto" },
   { label: "Aviso de Privacidad", href: "/privacidad" },
 ];
@@ -71,6 +73,12 @@ export default function Footer() {
           <p className="text-sm leading-relaxed text-gray-400 mb-5">
             Empresa regiomontana especializada en soluciones integrales de logística y transporte para la industria nacional. Más de 15 años moviendo lo que mueve a México.
           </p>
+          <h4 className="text-white font-bold text-xs tracking-wider uppercase mb-3">
+            Suscríbete a nuestro boletín
+          </h4>
+          <div className="mb-5">
+            <NewsletterForm />
+          </div>
           <div className="flex items-center gap-3">
             <a
               href="https://linkedin.com"
