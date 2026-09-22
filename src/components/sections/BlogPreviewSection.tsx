@@ -3,32 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { Newspaper, Calendar, User, ArrowRight } from "lucide-react";
+import { Newspaper, Calendar, ArrowRight } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
+import { blogPosts } from "@/lib/blog";
 
-const posts = [
-  {
-    title: "La guía para embarcar cargas de gran volumen",
-    date: "22 Ene, 2026",
-    img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=200&h=200&fit=crop&q=85",
-  },
-  {
-    title: "Cinco razones para elegir la mejor empresa de transporte",
-    date: "18 Ene, 2026",
-    img: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=200&h=200&fit=crop&q=85",
-  },
-  {
-    title: "Tres razones por las que necesitas visibilidad en tu cadena de suministro",
-    date: "12 Ene, 2026",
-    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&h=200&fit=crop&q=85",
-  },
-];
-
-const featured = {
-  title: "Cómo TRANSNORTE puede ayudar a tu logística",
-  date: "22 Ene, 2026",
-  img: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&h=700&fit=crop&q=85",
-};
+const [featured, ...rest] = blogPosts;
+const listPosts = rest.slice(0, 3);
 
 const headerVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -65,19 +45,19 @@ export default function BlogPreviewSection() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            {posts.map((p) => (
-              <motion.div key={p.title} variants={fade as Variants}>
+            {listPosts.map((p) => (
+              <motion.div key={p.slug} variants={fade as Variants}>
                 <Link
-                  href="/blog"
+                  href={`/blog/${p.slug}`}
                   className="group flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-red-200 hover:bg-gray-50 transition-all"
                 >
                   <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
-                    <Image src={p.img} alt="" fill className="object-cover" />
+                    <Image src={p.coverImage} alt="" fill className="object-cover" />
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 mb-1.5">
                       <Calendar className="w-3.5 h-3.5" />
-                      {p.date} · Por Admin
+                      {p.date} · Por {p.author.name}
                     </div>
                     <h3 className="font-bold text-gray-900 group-hover:text-red-700 transition-colors leading-snug">
                       {p.title}
@@ -95,14 +75,14 @@ export default function BlogPreviewSection() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <Link
-              href="/blog"
-              className="group relative block rounded-3xl overflow-hidden h-full min-h-[280px]"
+              href={`/blog/${featured.slug}`}
+              className="group relative block rounded-3xl overflow-hidden h-full min-h-70"
             >
-              <Image src={featured.img} alt={featured.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src={featured.coverImage} alt={featured.coverImageAlt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-linear-to-t from-gray-950/90 via-gray-950/30 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-300 mb-2">
-                  <User className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5" />
                   {featured.date}
                 </div>
                 <h3 className="text-xl font-black text-white leading-tight mb-3">{featured.title}</h3>
@@ -113,6 +93,21 @@ export default function BlogPreviewSection() {
             </Link>
           </motion.div>
         </div>
+
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-red-700 text-white font-bold rounded-4xl hover:bg-red-800 transition-colors shadow-lg shadow-red-900/20"
+          >
+            Ver todo el blog <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

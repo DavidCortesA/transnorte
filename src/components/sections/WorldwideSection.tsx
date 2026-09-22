@@ -57,7 +57,7 @@ export default function WorldwideSection() {
               <br /> para ti, desde 2010.
             </h2>
 
-            <div className="relative aspect-16/9 overflow-hidden">
+            <div className="relative aspect-video overflow-hidden">
               <Image
                 src="/images/world-dots-map.png"
                 alt="Mapa de cobertura TRANSNORTE"

@@ -52,7 +52,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gray-950 min-h-[640px] flex items-end">
+    <section className="relative overflow-hidden bg-gray-950 min-h-160 flex items-end">
       {/* Full-bleed background photo */}
       <div className="absolute inset-0">
         {slides.map((s, i) => (

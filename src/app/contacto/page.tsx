@@ -499,8 +499,8 @@ export default function ContactoPage() {
             {/* Map placeholder with image */}
             <div className="aspect-video rounded-2xl overflow-hidden relative shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=450&fit=crop&q=80"
-                alt="Ubicación TRANSNORTE Monterrey"
+                src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=800&h=450&fit=crop&q=80"
+                alt="Unidad de TRANSNORTE en carretera"
                 fill
                 className="object-cover"
               />
