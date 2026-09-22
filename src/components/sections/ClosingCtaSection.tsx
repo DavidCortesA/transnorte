@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/SocialIcons";
 
 const container = {
   hidden: {},
@@ -75,7 +76,7 @@ export default function ClosingCtaSection() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-10 py-4 border-2 border-white/40 text-white font-semibold text-base rounded-4xl hover:border-white hover:bg-white/10 transition-all"
           >
-            <MessageCircle className="w-4 h-4" />
+            <WhatsAppIcon className="w-4 h-4" />
             WhatsApp Directo
           </a>
         </motion.div>

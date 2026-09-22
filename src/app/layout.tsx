@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
 });
 
@@ -30,11 +31,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-MX" className={`${geistSans.variable} h-full`}>
+    <html lang="es-MX" data-scroll-behavior="smooth" className={`${plusJakarta.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppWidget />
       </body>
     </html>
   );

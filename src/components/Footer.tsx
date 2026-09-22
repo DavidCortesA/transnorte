@@ -1,15 +1,8 @@
 import Link from "next/link";
-import { Truck, Phone, Mail, MapPin, MessageCircle, Globe, Share2, Camera } from "lucide-react";
+import { Truck, Phone, Mail, MapPin } from "lucide-react";
 import NewsletterForm from "@/components/NewsletterForm";
-
-const services = [
-  { label: "Fletes Locales", href: "/servicios#fletes-locales" },
-  { label: "Fletes Foráneos", href: "/servicios#fletes-foraneos" },
-  { label: "Transporte Dedicado", href: "/servicios#dedicado" },
-  { label: "Maquinaria Pesada", href: "/servicios#maquinaria" },
-  { label: "Custodia y Monitoreo GPS", href: "/servicios#custodia" },
-  { label: "Logística Urgente", href: "/servicios#urgente" },
-];
+import { WhatsAppIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
+import { services } from "@/lib/services";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
@@ -40,7 +33,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-white text-red-700 font-bold rounded-4xl text-sm hover:bg-gray-100 transition-colors whitespace-nowrap"
             >
-              <MessageCircle className="w-4 h-4" />
+              <WhatsAppIcon className="w-4 h-4" />
               WhatsApp Ahora
             </a>
             <Link
@@ -87,7 +80,7 @@ export default function Footer() {
               className="w-8 h-8 rounded-4xl bg-gray-800 flex items-center justify-center hover:bg-red-700 transition-colors"
               aria-label="LinkedIn"
             >
-              <Globe className="w-4 h-4 text-gray-300" />
+              <LinkedInIcon className="w-4 h-4 text-gray-300" />
             </a>
             <a
               href="https://facebook.com"
@@ -96,7 +89,7 @@ export default function Footer() {
               className="w-8 h-8 rounded-4xl bg-gray-800 flex items-center justify-center hover:bg-red-700 transition-colors"
               aria-label="Facebook"
             >
-              <Share2 className="w-4 h-4 text-gray-300" />
+              <FacebookIcon className="w-4 h-4 text-gray-300" />
             </a>
             <a
               href="https://instagram.com"
@@ -105,7 +98,7 @@ export default function Footer() {
               className="w-8 h-8 rounded-4xl bg-gray-800 flex items-center justify-center hover:bg-red-700 transition-colors"
               aria-label="Instagram"
             >
-              <Camera className="w-4 h-4 text-gray-300" />
+              <InstagramIcon className="w-4 h-4 text-gray-300" />
             </a>
           </div>
         </div>
@@ -117,13 +110,13 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2.5">
             {services.map((s) => (
-              <li key={s.href}>
+              <li key={s.slug}>
                 <Link
-                  href={s.href}
+                  href={`/servicios/${s.slug}`}
                   className="text-sm text-gray-400 hover:text-red-400 transition-colors flex items-center gap-2 group"
                 >
                   <span className="w-1 h-1 rounded-full bg-red-700 group-hover:bg-red-400 transition-colors" />
-                  {s.label}
+                  {s.cardTitle}
                 </Link>
               </li>
             ))}
@@ -170,7 +163,7 @@ export default function Footer() {
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <MessageCircle className="w-4 h-4 text-red-500 shrink-0" />
+              <WhatsAppIcon className="w-4 h-4 text-red-500 shrink-0" />
               <a
                 href="https://wa.me/528112345678"
                 target="_blank"

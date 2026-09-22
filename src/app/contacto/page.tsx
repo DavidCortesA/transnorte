@@ -7,12 +7,12 @@ import {
   Phone,
   Mail,
   MapPin,
-  MessageCircle,
   Clock,
   CheckCircle,
   ArrowRight,
   Send,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/SocialIcons";
 
 const services = [
   "Flete local (AMM)",
@@ -119,7 +119,7 @@ export default function ContactoPage() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-6 py-3 bg-red-700 text-white font-bold text-sm rounded-4xl hover:bg-red-800 transition-colors"
                       >
-                        <MessageCircle className="w-4 h-4" />
+                        <WhatsAppIcon className="w-4 h-4" />
                         Escribir por WhatsApp
                       </a>
                       <button
@@ -358,7 +358,7 @@ export default function ContactoPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-4xl bg-green-50 flex items-center justify-center shrink-0">
-                      <MessageCircle className="w-4 h-4 text-green-700" />
+                      <WhatsAppIcon className="w-4 h-4 text-green-700" />
                     </div>
                     <div>
                       <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-0.5">
@@ -410,7 +410,7 @@ export default function ContactoPage() {
                   rel="noopener noreferrer"
                   className="mt-6 flex items-center justify-center gap-2 w-full px-4 py-3 bg-green-600 text-white font-bold text-sm rounded-4xl hover:bg-green-700 transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   Abrir WhatsApp
                 </a>
               </div>
@@ -499,7 +499,7 @@ export default function ContactoPage() {
             {/* Map placeholder with image */}
             <div className="aspect-video rounded-2xl overflow-hidden relative shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1553469945-7d8e4d19c37b?w=800&h=450&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=450&fit=crop&q=80"
                 alt="Ubicación TRANSNORTE Monterrey"
                 fill
                 className="object-cover"

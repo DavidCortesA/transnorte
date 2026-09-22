@@ -3,49 +3,9 @@
 import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
-import {
-  Truck, Navigation, Wrench, Shield, AlertCircle, Package, ChevronRight, ArrowRight, LayoutGrid,
-} from "lucide-react";
+import { ChevronRight, ArrowRight, LayoutGrid } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
-
-const services = [
-  {
-    icon: Truck,
-    title: "Fletes Locales y Foráneos",
-    desc: "Servicio de transporte terrestre punto a punto en toda la República. Camionetas 1T hasta tráileres 53 pies.",
-    href: "/servicios#fletes-locales",
-  },
-  {
-    icon: Navigation,
-    title: "Transporte Dedicado",
-    desc: "Unidad y operador exclusivos para su empresa. Disponibilidad programada, flexibilidad total de rutas y horarios.",
-    href: "/servicios#dedicado",
-  },
-  {
-    icon: Wrench,
-    title: "Maquinaria Pesada",
-    desc: "Traslado especializado de maquinaria industrial, equipos de construcción y activos de alto valor.",
-    href: "/servicios#maquinaria",
-  },
-  {
-    icon: Shield,
-    title: "Custodia y Monitoreo GPS",
-    desc: "Escolta de seguridad y rastreo satelital en tiempo real 24/7 para cargas de alto valor o zonas sensibles.",
-    href: "/servicios#custodia",
-  },
-  {
-    icon: AlertCircle,
-    title: "Logística Urgente",
-    desc: "Respuesta en menos de 2 horas para cargas críticas. Operamos los 365 días del año, incluyendo días festivos.",
-    href: "/servicios#urgente",
-  },
-  {
-    icon: Package,
-    title: "Gestión de Carga",
-    desc: "Coordinación integral: carga, tránsito, descarga y documentación. Su operación en una sola llamada.",
-    href: "/servicios",
-  },
-];
+import { services } from "@/lib/services";
 
 const headerVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -69,7 +29,7 @@ export default function ServicesSection() {
   const gridInView = useInView(gridRef, { once: true, amount: 0.1 });
 
   return (
-    <section className="py-20 lg:py-28 bg-gray-50" id="servicios">
+    <section className="py-20 lg:py-28 bg-white" id="servicios">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -92,23 +52,20 @@ export default function ServicesSection() {
         {/* Grid */}
         <motion.div
           ref={gridRef}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12"
           variants={gridContainer}
           initial="hidden"
           animate={gridInView ? "visible" : "hidden"}
         >
           {services.map((s) => (
-            <motion.div key={s.title} variants={cardVariants as Variants}>
-              <Link
-                href={s.href}
-                className="group bg-white rounded-3xl p-7 border border-gray-200 hover:border-red-200 hover:shadow-lg hover:shadow-red-900/5 transition-all duration-300 flex flex-col h-full"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center mb-5 group-hover:bg-red-700 transition-colors">
+            <motion.div key={s.slug} variants={cardVariants as Variants}>
+              <Link href={`/servicios/${s.slug}`} className="group flex flex-col">
+                <div className="w-12 h-12 rounded-2xl border-2 border-red-100 flex items-center justify-center mb-5 group-hover:border-red-700 group-hover:bg-red-700 transition-colors">
                   <s.icon className="w-6 h-6 text-red-700 group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed flex-1">{s.desc}</p>
-                <div className="flex items-center gap-1 text-red-700 text-sm font-semibold mt-5 group-hover:gap-2 transition-all">
+                <h3 className="font-bold text-gray-900 text-lg mb-2">{s.cardTitle}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{s.cardDesc}</p>
+                <div className="flex items-center gap-1 text-red-700 text-sm font-semibold mt-4 group-hover:gap-2 transition-all">
                   Ver detalle <ChevronRight className="w-4 h-4" />
                 </div>
               </Link>

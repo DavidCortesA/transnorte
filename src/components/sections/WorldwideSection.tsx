@@ -26,10 +26,10 @@ const faqs = [
 ];
 
 const pins = [
-  { top: "22%", left: "16%", color: "text-red-500" },
-  { top: "14%", left: "72%", color: "text-purple-500" },
-  { top: "48%", left: "34%", color: "text-amber-500" },
-  { top: "60%", left: "80%", color: "text-blue-500" },
+  { top: "30%", left: "16%", color: "text-red-500" },
+  { top: "34%", left: "72%", color: "text-purple-500" },
+  { top: "68%", left: "34%", color: "text-amber-500" },
+  { top: "70%", left: "80%", color: "text-blue-500" },
 ];
 
 const headerVariants = {
@@ -41,8 +41,8 @@ export default function WorldwideSection() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="py-20 lg:py-28 bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-28 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-gray-950 rounded-2xl p-8 lg:p-12">
         <div className="grid lg:grid-cols-2 gap-14 items-start">
           {/* Left: heading + dot map with pins */}
           <motion.div
@@ -57,7 +57,7 @@ export default function WorldwideSection() {
               <br /> para ti, desde 2010.
             </h2>
 
-            <div className="relative aspect-16/9 rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
+            <div className="relative aspect-16/9 overflow-hidden">
               <Image
                 src="/images/world-dots-map.png"
                 alt="Mapa de cobertura TRANSNORTE"

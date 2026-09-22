@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Truck, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { WhatsAppIcon } from "@/components/icons/SocialIcons";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -74,6 +75,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-red-200 transition-colors"
             >
+              <WhatsAppIcon className="w-3 h-3" />
               WhatsApp Directo
             </a>
           </div>

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { Users, Globe, Share2, Camera, Mail } from "lucide-react";
+import { Users } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
+import { LinkedInIcon, InstagramIcon, XIcon } from "@/components/icons/SocialIcons";
 
 const team = [
   {
@@ -19,12 +20,12 @@ const team = [
   {
     name: "Jorge Nicolás",
     role: "Ingeniero de Flota",
-    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=460&fit=crop&q=85",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=460&fit=crop&q=85",
   },
   {
     name: "Sonia Miller",
     role: "Gerente de Logística",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=460&fit=crop&q=85",
+    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=460&fit=crop&q=85",
   },
 ];
 
@@ -43,7 +44,11 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-const socials = [Globe, Share2, Camera, Mail];
+const socials = [
+  { icon: LinkedInIcon, href: "https://www.linkedin.com", label: "LinkedIn" },
+  { icon: InstagramIcon, href: "https://www.instagram.com", label: "Instagram" },
+  { icon: XIcon, href: "https://x.com", label: "X" },
+];
 
 export default function TeamSection() {
   return (
@@ -76,23 +81,26 @@ export default function TeamSection() {
               variants={cardVariants as Variants}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.25 }}
-              className="group rounded-3xl overflow-hidden border border-gray-200"
+              className="group relative"
             >
-              <div className="relative aspect-3/4">
+              <div className="relative aspect-3/4 rounded-3xl overflow-hidden">
                 <Image src={m.img} alt={m.name} fill className="object-cover" />
-                <div className="absolute inset-0 bg-linear-to-t from-gray-950/80 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-                  {socials.map((Icon, i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-4xl bg-white/15 backdrop-blur-sm flex items-center justify-center"
-                    >
-                      <Icon className="w-3.5 h-3.5 text-white" />
-                    </div>
-                  ))}
-                </div>
               </div>
-              <div className="p-4 text-center">
+              <div className="absolute bottom-20 right-1 flex items-center gap-1.5 bg-white rounded-4xl shadow-lg border border-gray-100 p-1.5">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${s.label} de ${m.name}`}
+                    className="group/social w-7 h-7 rounded-4xl bg-red-50 flex items-center justify-center hover:bg-red-700 transition-colors"
+                  >
+                    <s.icon className="w-3.5 h-3.5 text-red-700 group-hover/social:text-white transition-colors" />
+                  </a>
+                ))}
+              </div>
+              <div className="pt-8 text-center">
                 <div className="font-bold text-gray-900">{m.name}</div>
                 <div className="text-xs text-red-700 font-semibold uppercase tracking-wide mt-0.5">
                   {m.role}

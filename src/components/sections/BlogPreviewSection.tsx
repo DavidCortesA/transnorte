@@ -10,14 +10,17 @@ const posts = [
   {
     title: "La guía para embarcar cargas de gran volumen",
     date: "22 Ene, 2026",
+    img: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=200&h=200&fit=crop&q=85",
   },
   {
     title: "Cinco razones para elegir la mejor empresa de transporte",
     date: "18 Ene, 2026",
+    img: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=200&h=200&fit=crop&q=85",
   },
   {
     title: "Tres razones por las que necesitas visibilidad en tu cadena de suministro",
     date: "12 Ene, 2026",
+    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&h=200&fit=crop&q=85",
   },
 ];
 
@@ -66,15 +69,20 @@ export default function BlogPreviewSection() {
               <motion.div key={p.title} variants={fade as Variants}>
                 <Link
                   href="/blog"
-                  className="group flex items-start gap-4 p-5 rounded-2xl border border-gray-200 hover:border-red-200 hover:bg-gray-50 transition-all"
+                  className="group flex items-center gap-4 p-4 rounded-2xl border border-gray-200 hover:border-red-200 hover:bg-gray-50 transition-all"
                 >
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 shrink-0 pt-1">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {p.date}
+                  <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
+                    <Image src={p.img} alt="" fill className="object-cover" />
                   </div>
-                  <h3 className="font-bold text-gray-900 group-hover:text-red-700 transition-colors leading-snug">
-                    {p.title}
-                  </h3>
+                  <div>
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-400 mb-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {p.date} · Por Admin
+                    </div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-red-700 transition-colors leading-snug">
+                      {p.title}
+                    </h3>
+                  </div>
                 </Link>
               </motion.div>
             ))}

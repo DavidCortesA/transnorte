@@ -4,14 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
-import { Info, CheckCircle2, ArrowRight, Users } from "lucide-react";
+import { Info, CheckCircle2, ArrowRight, Users, Building2, ShieldCheck, MapPinned } from "lucide-react";
 import Counter from "@/components/Counter";
 import Eyebrow from "@/components/Eyebrow";
 
 const stats = [
-  { value: 500, suffix: "+", label: "Empresas atendidas" },
-  { value: 120, suffix: "+", label: "Operadores certificados" },
-  { value: 32, suffix: "", label: "Estados con cobertura" },
+  { icon: Building2, value: 500, suffix: "+", label: "Empresas atendidas" },
+  { icon: ShieldCheck, value: 120, suffix: "+", label: "Operadores certificados" },
+  { icon: MapPinned, value: 32, suffix: "", label: "Estados con cobertura" },
+  { icon: CheckCircle2, value: 98, suffix: "%", label: "Entregas a tiempo" },
 ];
 
 const slideLeft = {
@@ -110,17 +111,22 @@ export default function AboutSection() {
             </ul>
 
             <motion.div
-              className="grid grid-cols-3 gap-4 mb-9 pb-9 border-b border-gray-100"
+              className="grid grid-cols-2 gap-x-6 gap-y-6 mb-9 pb-9 border-b border-gray-100"
               variants={gridContainer}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
             >
               {stats.map((s) => (
-                <motion.div key={s.label} variants={gridItem as Variants}>
-                  <div className="text-2xl sm:text-3xl font-black text-gray-900">
-                    <Counter target={s.value} suffix={s.suffix} />
+                <motion.div key={s.label} variants={gridItem as Variants} className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-4xl bg-red-50 flex items-center justify-center shrink-0 mt-0.5">
+                    <s.icon className="w-4 h-4 text-red-700" />
                   </div>
-                  <div className="text-xs text-gray-500 mt-1 leading-snug">{s.label}</div>
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-black text-gray-900 leading-none">
+                      <Counter target={s.value} suffix={s.suffix} />
+                    </div>
+                    <div className="text-xs text-gray-500 mt-1.5 leading-snug">{s.label}</div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

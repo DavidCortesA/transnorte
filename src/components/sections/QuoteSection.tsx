@@ -31,6 +31,7 @@ export default function QuoteSection() {
 
   const inputBase =
     "w-full px-4 py-3 bg-white border border-gray-300 rounded-4xl text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/10 transition-all";
+  const labelBase = "block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1.5";
 
   return (
     <section className="py-20 lg:py-28 bg-gray-50">
@@ -61,19 +62,35 @@ export default function QuoteSection() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <input required name="name" placeholder="Nombre*" className={inputBase} />
-                  <input required type="email" name="email" placeholder="Email*" className={inputBase} />
+                  <div>
+                    <label htmlFor="name" className={labelBase}>Nombre*</label>
+                    <input required id="name" name="name" placeholder="Juan Pérez" className={inputBase} />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className={labelBase}>Email*</label>
+                    <input required type="email" id="email" name="email" placeholder="juan@empresa.com" className={inputBase} />
+                  </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <input required type="tel" name="phone" placeholder="Teléfono*" className={inputBase} />
-                  <input name="company" placeholder="Empresa" className={inputBase} />
+                  <div>
+                    <label htmlFor="phone" className={labelBase}>Teléfono*</label>
+                    <input required type="tel" id="phone" name="phone" placeholder="+52 (81) 1234-5678" className={inputBase} />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className={labelBase}>Empresa</label>
+                    <input id="company" name="company" placeholder="Nombre de tu empresa" className={inputBase} />
+                  </div>
                 </div>
-                <textarea
-                  name="message"
-                  rows={3}
-                  placeholder="Cuéntanos sobre tu envío..."
-                  className={`${inputBase} rounded-2xl resize-none`}
-                />
+                <div>
+                  <label htmlFor="message" className={labelBase}>Mensaje</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={3}
+                    placeholder="Cuéntanos sobre tu envío..."
+                    className={`${inputBase} rounded-2xl resize-none`}
+                  />
+                </div>
                 <button
                   type="submit"
                   disabled={loading}
